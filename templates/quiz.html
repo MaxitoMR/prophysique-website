@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metasense Metabolic Type Quiz | Pro Physique Fitness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar scrolled">
+    <div class="container nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-pro">PRO</span><span class="logo-physique">Physique</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- QUIZ INTRO -->
+  <section class="quiz-hero" id="quiz-intro">
+    <div class="container text-center">
+      <span class="label">Free Assessment</span>
+      <h1>DISCOVER YOUR <span class="gold">METABOLIC TYPE</span></h1>
+      <p class="hero-sub">Uncover the key to unlocking your best physique and fitness journey.<br>This takes about 2 minutes.</p>
+      <button class="btn btn-primary btn-lg" id="startQuiz">Start the Quiz</button>
+    </div>
+  </section>
+
+  <!-- QUIZ QUESTIONS -->
+  <section class="quiz-section" id="quiz-section" style="display:none;">
+    <div class="container">
+      <div class="quiz-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-text" id="progressText">1 / 10</span>
+      </div>
+
+      <div class="quiz-card" id="quizCard">
+        <!-- Questions injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ RESULTS -->
+  <section class="quiz-results" id="quiz-results" style="display:none;">
+    <div class="container">
+      <div class="result-card" id="resultCard">
+        <!-- Results injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <script src="{{ url_for('static', filename='quiz.js') }}"></script>
+</body>
+</html>
