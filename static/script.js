@@ -8,23 +8,44 @@ window.addEventListener('scroll', () => {
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
+function closeMenu() {
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('active');
+  document.body.classList.remove('menu-open');
+}
+
+function openMenu() {
+  navLinks.classList.add('open');
+  navToggle.classList.add('active');
+  document.body.classList.add('menu-open');
+}
+
 navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  navToggle.classList.toggle('active');
+  if (navLinks.classList.contains('open')) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 });
 
 // Close mobile menu on link click
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('active');
-  });
+  link.addEventListener('click', closeMenu);
+});
+
+// Close menu when tapping outside
+document.addEventListener('click', (e) => {
+  if (navLinks.classList.contains('open') &&
+      !navLinks.contains(e.target) &&
+      !navToggle.contains(e.target)) {
+    closeMenu();
+  }
 });
 
 // Scroll fade-in animations
 const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -50px 0px'
+  threshold: 0.1,
+  rootMargin: '0px 0px -30px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
